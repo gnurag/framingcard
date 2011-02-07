@@ -1,0 +1,13 @@
+# Framing card settings file
+output_dir: "/path/to/document/root"
+template_file: "/path/to/template.erb"
+display_images: 30
+debug: true
+
+flickr_api_key: "deadbeef"
+flickr_api_secret: "facefeed"
+
+users:
+      - "gnurag"
+      - "user1"
+      - "user2"

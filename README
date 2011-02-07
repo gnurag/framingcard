@@ -1,0 +1,11 @@
+* Framing card planet *
+
+Instructions for installing framing card planet:
+
+1. Edit config.yml and set the config options.
+
+2. Copy assets directory to the website root (output_dir).
+
+3. Edit and customize template.erb as needed.
+
+4. Run framingcard.rb from command line or put it in cron.
