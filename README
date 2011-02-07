@@ -2,10 +2,13 @@
 
 Instructions for installing framing card planet:
 
-1. Edit config.yml and set the config options.
+1. Signup for an new app with Flickr and get api key, secret.
+   http://www.flickr.com/services/apps/create/
 
-2. Copy assets directory to the website root (output_dir).
+2. Edit config.yml and set the config options.
 
-3. Edit and customize template.erb as needed.
+3. Copy assets directory to the website root (output_dir).
 
-4. Run framingcard.rb from command line or put it in cron.
+4. Edit and customize template.erb as needed.
+
+5. Run framingcard.rb from command line or put it in cron.
