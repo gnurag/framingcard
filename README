@@ -11,4 +11,7 @@ Instructions for installing framing card planet:
 
 4. Edit and customize template.erb as needed.
 
+5. Install the following gems:
+   # gem install erubis flickr
+
 5. Run framingcard.rb from command line or put it in cron.
