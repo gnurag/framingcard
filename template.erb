@@ -36,7 +36,7 @@
   all_sizes.delete_if{|i| (i['height'].to_i > 1024) or (i['width'].to_i > 1024) }
   large_img = all_sizes.last['source']
 %>
-<a href="<%= large_img %>" rel="lightbox[frame]"><img src="<%= img.source %>" alt="<%= img.title %>" title="<%= img.title %>" class="photo" /></a>
+<a href="<%= large_img %>" rel="lightbox[frame]" title="<%= img.title %>"><img src="<%= img.source %>" alt="<%= img.title %>" title="<%= img.title %>" class="photo" /></a>
 <p class="img_notes"><a href="<%= img.url-%>" target="_blank"><%= img.title -%> by <%= img.owner.username-%></a> | favorited by <%= fav_owners[img.id].join(', ')-%> </p>
 </div> <!-- /photo -->
 <% end %>
