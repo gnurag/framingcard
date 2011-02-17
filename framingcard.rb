@@ -26,9 +26,13 @@ USERS.each{|u|
     user = flickr.users(u)
     if user
       user.favorites.each{|fav_img|
-        fav_owners["#{fav_img.id}-#{fav_img.instance_variable_get('@date_faved')}"] = user.username
+        ## Initialize a blank array if this key doesn't exist.
+        fav_owners[fav_img.id] = Array.new if fav_owners[fav_img.id].nil?
         puts "#{fav_img.title} faved by #{user.username}" if DEBUG
-        images.push fav_img
+        ## Add the image to the images array only if it has not been added 
+        # to the array yet. We do this by checking fav_owners hash.
+        images.push fav_img if fav_owners[fav_img.id].length == 0
+        fav_owners[fav_img.id] << "<a href='#{user.pretty_url}' target='_blank'>#{user.username}</a>"
       }
     end
   rescue
