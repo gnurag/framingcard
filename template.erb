@@ -9,10 +9,12 @@
 <meta name = "viewport" content = "width=device-width" />
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="assets/horizon.css" />
+<link rel="stylesheet" href="assets/lightbox.css" type="text/css" media="screen" />
 <!-- SCRIPTS -->
 <script src="http://ajax.googleapis.com/ajax/libs/prototype/1.6.1.0/prototype.js" type="text/javascript"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.3/scriptaculous.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.3/scriptaculous.js?load=effects,builder" type="text/javascript"></script>
 <script src="assets/mint.js" type="text/javascript"></script>
+<script src="assets/lightbox.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -29,10 +31,13 @@
 
 <% for img in images %>
 <div class="photobox">
-<a href="<%= img.url %>" target="_blank">
-<img src="<%= img.source %>" alt="<%= img.title %>" title="<%= img.title %>" class="photo" />
-</a>
-<p class="img_notes"><%= img.title -%> by <%= img.owner.username-%> | favorited by <%= fav_owners["#{img.id}-#{img.instance_variable_get('@date_faved')}"]-%> </p>
+<%
+  all_sizes = img.sizes
+  all_sizes.delete_if{|i| (i['height'].to_i > 1024) or (i['width'].to_i > 1024) }
+  large_img = all_sizes.last['source']
+%>
+<a href="<%= large_img %>" rel="lightbox[frame]"><img src="<%= img.source %>" alt="<%= img.title %>" title="<%= img.title %>" class="photo" /></a>
+<p class="img_notes"><a href="<%= img.url-%>" target="_blank"><%= img.title -%> by <%= img.owner.username-%></a> | favorited by <%= fav_owners["#{img.id}-#{img.instance_variable_get('@date_faved')}"]-%> </p>
 </div> <!-- /photo -->
 <% end %>
 
