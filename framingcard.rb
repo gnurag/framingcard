@@ -2,6 +2,7 @@
 require 'rubygems'
 require 'erubis'
 require 'flickr'
+require 'yaml'
 
 ## Settings
 config = YAML.load(File.open( File.dirname(__FILE__) + "/config.yml" ))
