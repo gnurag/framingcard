@@ -9,6 +9,7 @@ config = YAML.load(File.open( File.dirname(__FILE__) + "/config.yml" ))
 OUTPUT_DIR = config['output_dir']
 TEMPLATE_FILE = config['template_file']
 DISPLAY_IMAGES = config['display_images']
+MAX_IMAGES_PER_USER = (config['max_images_per_user'] || 3) - 1
 DEBUG = config['debug']
 
 FLICKR_API_KEY = config['flickr_api_key']
@@ -26,14 +27,14 @@ USERS.each{|u|
   begin
     user = flickr.users(u)
     if user
-      user.favorites.each{|fav_img|
+      user.favorites[0..MAX_IMAGES_PER_USER].each{|fav_img|
         ## Initialize a blank array if this key doesn't exist.
         fav_owners[fav_img.id] = Array.new if fav_owners[fav_img.id].nil?
         puts "#{fav_img.title} faved by #{user.username}" if DEBUG
         ## Add the image to the images array only if it has not been added 
         # to the array yet. We do this by checking fav_owners hash.
         images.push fav_img if fav_owners[fav_img.id].length == 0
-        fav_owners[fav_img.id] << "<a href='#{user.pretty_url}' target='_blank'>#{user.username}</a>"
+        fav_owners[fav_img.id] << "<a href='#{user.pretty_url}' target='_blank'>#{user.username}</a> (<a href='#{user.pretty_url}/favorites' target='_blank'>more</a>)"
       }
     end
   rescue

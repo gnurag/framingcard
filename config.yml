@@ -1,6 +1,7 @@
 # Framing card settings file
 output_dir: "/path/to/document/root"
 template_file: "/path/to/template.erb"
+max_images_per_user: 4
 display_images: 30
 debug: true
 
