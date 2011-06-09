@@ -34,7 +34,7 @@ USERS.each{|u|
         ## Add the image to the images array only if it has not been added 
         # to the array yet. We do this by checking fav_owners hash.
         images.push fav_img if fav_owners[fav_img.id].length == 0
-        fav_owners[fav_img.id] << "<a href='#{user.pretty_url}' target='_blank'>#{user.username}</a> (<a href='#{user.pretty_url}/favorites' target='_blank'>more</a>)"
+        fav_owners[fav_img.id] << "<a href='#{user.pretty_url}' target='_blank'>#{user.username}</a> (<a href='#{user.photos_url}favorites' target='_blank'>more</a>)"
       }
     end
   rescue
