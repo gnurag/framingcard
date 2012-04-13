@@ -37,7 +37,8 @@ USERS.each{|u|
         fav_owners[fav_img.id] << "<a href='#{user.pretty_url}' target='_blank'>#{user.username}</a> (<a href='#{user.photos_url}favorites' target='_blank'>more</a>)"
       }
     end
-  rescue
+  rescue Exception => e
+    puts "[#{u}] #{e.to_s}"
   end
 }
 
